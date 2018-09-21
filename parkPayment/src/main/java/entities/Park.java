@@ -1,7 +1,9 @@
 package entities;
+import datastructs.Address;
 
 public class Park {
 	private float fee;
+	private Address address;
 	
 	public Park() {
 		fee = 0.0f;
