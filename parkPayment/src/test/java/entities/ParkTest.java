@@ -1,8 +1,10 @@
-package cs445.parkPayment;
+package entities;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import entities.Park;
 
 public class ParkTest {
 

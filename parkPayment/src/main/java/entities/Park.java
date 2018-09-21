@@ -1,4 +1,4 @@
-package cs445.parkPayment;
+package entities;
 
 public class Park {
 	private float fee;
