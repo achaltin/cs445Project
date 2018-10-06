@@ -52,16 +52,16 @@ public class App implements ParkManager
 	public int addPark(float f, Address addr) {
 		Park p = new Park(f, addr);
 		parks.add(p);
-		return p.id;
+		return p.id();
 	}
 	public int addPark(Address addr) {
 		Park p = new Park(addr);
 		parks.add(p);
-		return p.id;
+		return p.id();
 	}
 	public void updatePark(int id, float f) {
 		for(Park p : parks) {
-			if(p.id == id) {
+			if(p.id() == id) {
 				p.updateFee(f);
 				break;
 			}
