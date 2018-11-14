@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import cs445.parkPayment.UniqueIdGenerator;
+import datastructs.Address;
 import datastructs.Date;
+import datastructs.Geo;
 
 public class NoteTest {
 	
@@ -35,6 +37,19 @@ public class NoteTest {
 		Note n = new Note(123, UniqueIdGenerator.getUniqueID(), d, "Title", "Some text for the note");
 		v.addNote(n);
 		assertEquals(v.notes.size(),0);
+	}
+	@Test
+	public void testAddNoteToPark() {
+		Address a = new Address("street", "city", "state","zip");
+		Geo g = new Geo(1.1, 2.2);
+		int[][] goodArray = { {1,2}, {3,4}, {5,6} };
+		Park p = new Park("name", a, "www.web.com",g, goodArray);
+		
+		Note n = new Note(p.pid, 2, new Date(1,2,2018), "Title", "Text");
+		
+		p.addNote(n);
+		assertEquals(p.notes.size(), 1);
+		assertEquals(p.notes.get(0), n);
 	}
 	@Test
 	public void testNoteEqualToSelf() {

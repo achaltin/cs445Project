@@ -18,6 +18,7 @@ public class Park {
 	Geo geo;
 	int[][] paymentInfo;
 	ArrayList<Date> admissions;
+	ArrayList<Note> notes;
 	
 	
 	public Park(String n, Address a, String w, Geo g, int[][] pi) {
@@ -33,6 +34,7 @@ public class Park {
 		else
 			paymentInfo = makeValidPaymentArray();
 		admissions = new ArrayList<Date>();
+		notes = new ArrayList<Note>();
 	}
 	public Park(String n, String r, Address a, String p, String w, Geo g, int[][] pi) {
 		pid = UniqueIdGenerator.getUniqueID();
@@ -47,6 +49,7 @@ public class Park {
 		else
 			paymentInfo = makeValidPaymentArray();
 		admissions = new ArrayList<Date>();
+		notes = new ArrayList<Note>();
 	}
 	
 	public static boolean isValidPaymentArray(int [][] pi) {
@@ -83,6 +86,13 @@ public class Park {
 	public void addAdmission(int m, int d, int y) {
 		admissions.add(new Date(m, d, y));
 	}
+	public void addNote(Note n) {
+		if(n.pid == pid)
+			notes.add(n);
+	}
+	public ArrayList<Note> getNotes(){
+		return notes;
+	}
 	
 	public int getPid() {
 		return pid;
@@ -90,4 +100,26 @@ public class Park {
 	public String getName() {
 		return name;
 	}
+	public void setName(String n) {
+		name = n;
+	}
+	public void setAddress(Address a) {
+		address = a;
+	}
+	public void setRegion(String r) {
+		region = r;
+	}
+	public void setPhone(String p) {
+		phone = p;
+	}
+	public void setWebsite(String w) {
+		web = w;
+	}
+	public void setGeo(Geo g) {
+		geo = g;
+	}
+	public void setPaymentInfo(int [][] pi) {
+		paymentInfo = pi;
+	}
 }
+
