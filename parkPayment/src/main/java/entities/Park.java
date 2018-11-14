@@ -86,6 +86,11 @@ public class Park {
 	public void addAdmission(int m, int d, int y) {
 		admissions.add(new Date(m, d, y));
 	}
+	public void addAdmission() {
+		java.util.Date today = new java.util.Date();
+		Date date = new Date(today.getMonth(), today.getDate(), today.getYear());
+		admissions.add(date);
+	}
 	public void addNote(Note n) {
 		if(n.pid == pid)
 			notes.add(n);

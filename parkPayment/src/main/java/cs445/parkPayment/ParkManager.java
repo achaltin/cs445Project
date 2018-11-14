@@ -135,8 +135,11 @@ public class ParkManager implements BoundaryInterface {
 		return null;
 	}
 	public Order createOrder(int pid, Vehicle veh, Visitor vi, CreditCard cc) {
-		// TODO Auto-generated method stub
-		return null;
+		Order o = new Order(pid, veh, vi, cc);
+		orders.add(o);
+		Park p = findParkById(pid);
+		p.addAdmission();
+		return o;
 	}
 	public ArrayList<Order> viewAllOrders() {
 		// TODO Auto-generated method stub
