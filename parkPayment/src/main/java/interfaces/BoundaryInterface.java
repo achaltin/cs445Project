@@ -35,6 +35,7 @@ public interface BoundaryInterface {
 	public Visitor viewVisitorDetail(int vid);
 	public ArrayList<Visitor> searchVisitors(String key);
 	
+	public Report createReport(String name, Date start, Date end);
 	public ArrayList<Report> viewAllReports();
 	public Report viewReportDetail(int rid);
 	
