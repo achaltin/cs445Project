@@ -1,46 +1,80 @@
 package entities;
-import java.text.NumberFormat;
 
+import cs445.parkPayment.UniqueIdGenerator;
 import datastructs.Address;
+import datastructs.Geo;
+import java.util.Scanner;
+import java.util.Date;
+import java.util.ArrayList;
 
 public class Park {
-	private float fee;
-	private Address address;
-	static int idCount = 0;
-	private int id;
+	int pid;
+	String name;
+	String region;
+	Address address;
+	String phone;
+	String web;
+	Geo geo;
+	int[][] paymentInfo;
+	ArrayList<Date> admissions;
 	
-	public Park(Address addr) {
-		fee = 0.0f;
-		address = addr;
-		idCount++;
-		id = idCount;
+	
+	public Park(String n, Address a, String w, Geo g, int[][] pi) {
+		pid = UniqueIdGenerator.getUniqueID();
+		name = n;
+		region = "";
+		address = a;
+		phone = "";
+		web = w;
+		geo = g;
+		if(isValidPaymentArray(pi))
+			paymentInfo = pi;
+		else
+			paymentInfo = makeValidPaymentArray();
+	}
+	public Park(String n, String r, Address a, String p, String w, Geo g, int[][] pi) {
+		pid = UniqueIdGenerator.getUniqueID();
+		name = n;
+		region = r;
+		address = a;
+		phone = p;
+		web = w;
+		geo = g;
+		if(isValidPaymentArray(pi))
+			paymentInfo = pi;
+		else
+			paymentInfo = makeValidPaymentArray();
 	}
 	
-	public Park(float f, Address addr) {
-		fee = f;
-		address = addr;
-		idCount++;
-		id = idCount;
+	public static boolean isValidPaymentArray(int [][] pi) {
+		return pi.length == 3 && pi[0].length ==2 && pi[1].length == 2 && pi[2].length==2;
 	}
 	
-	public float viewFee() {
-		return fee;
+	public static int[][] makeValidPaymentArray(int inMot, int outMot, int inCar, int outCar, 
+			int inRv, int outRv){
+		int [][] ret = { {inMot, outMot}, {inCar, outCar}, {inRv, outRv} };
+		return ret;
 	}
-	
-	public String getState() {
-		return address.state;
+	public static int[][] makeValidPaymentArray(){
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter in-state motercyle price: ");
+		int inMot = scan.nextInt();
+		System.out.println("Enter out-of-state motorcyle price: ");
+		int outMot = scan.nextInt();
+		System.out.println("Enter in-state car price: ");
+		int inCar = scan.nextInt();
+		System.out.println("Enter out-of-state car price: ");
+		int outCar = scan.nextInt();		
+		System.out.println("Enter in-state RV price: ");
+		int inRv = scan.nextInt();
+		System.out.println("Enter out-of-state RV price: ");
+		int outRv = scan.nextInt();
+		scan.close();
+		
+		int [][] ret = { {inMot, outMot}, {inCar, outCar}, {inRv, outRv} };
+		return ret;
 	}
-	
-	public void updateFee(float f) {
-		fee = f;
-	}
-	
-	public int id()
-	{
-		return id;
-	}
-	public String toString() {
-		NumberFormat nf = NumberFormat.getCurrencyInstance();
-		return nf.format(fee)+"\t" + address.toString();
+	public void addAdmission() {
+		admissions.add(new Date());
 	}
 }
