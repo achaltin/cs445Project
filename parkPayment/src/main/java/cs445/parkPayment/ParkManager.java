@@ -142,24 +142,32 @@ public class ParkManager implements BoundaryInterface {
 		return o;
 	}
 	public ArrayList<Order> viewAllOrders() {
-		// TODO Auto-generated method stub
-		return null;
+		return orders;
 	}
 	public Order viewOrderDetails(int oid) {
-		// TODO Auto-generated method stub
-		return null;
+		Order o = findOrderById(oid);
+		return o;
 	}
 	public ArrayList<Order> searchOrders(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public Visitor createVisitor(String email) {
+		Visitor v = new Visitor(email);
+		visitors.add(v);
+		return v;
+	}
+	public Visitor createVisitor(String name, String email) {
+		Visitor v = new Visitor(name, email);
+		visitors.add(v);
+		return v;
+	}
 	public ArrayList<Visitor> viewAllVisitors() {
-		// TODO Auto-generated method stub
-		return null;
+		return visitors;
 	}
 	public Visitor viewVisitorDetail(int vid) {
-		// TODO Auto-generated method stub
-		return null;
+		Visitor v = findVisitorById(vid);
+		return v;
 	}
 	public ArrayList<Visitor> searchVisitors(String key) {
 		// TODO Auto-generated method stub

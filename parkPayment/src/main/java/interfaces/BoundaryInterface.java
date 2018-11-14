@@ -29,6 +29,8 @@ public interface BoundaryInterface {
 	public Order viewOrderDetails(int oid);
 	public ArrayList<Order> searchOrders(String key);
 	
+	public Visitor createVisitor(String email);
+	public Visitor createVisitor(String name, String email);
 	public ArrayList<Visitor> viewAllVisitors();
 	public Visitor viewVisitorDetail(int vid);
 	public ArrayList<Visitor> searchVisitors(String key);
