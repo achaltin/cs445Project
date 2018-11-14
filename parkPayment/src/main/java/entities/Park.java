@@ -1,11 +1,12 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import cs445.parkPayment.UniqueIdGenerator;
 import datastructs.Address;
+import datastructs.Date;
 import datastructs.Geo;
-import java.util.Scanner;
-import java.util.Date;
-import java.util.ArrayList;
 
 public class Park {
 	int pid;
@@ -31,6 +32,7 @@ public class Park {
 			paymentInfo = pi;
 		else
 			paymentInfo = makeValidPaymentArray();
+		admissions = new ArrayList<Date>();
 	}
 	public Park(String n, String r, Address a, String p, String w, Geo g, int[][] pi) {
 		pid = UniqueIdGenerator.getUniqueID();
@@ -44,6 +46,7 @@ public class Park {
 			paymentInfo = pi;
 		else
 			paymentInfo = makeValidPaymentArray();
+		admissions = new ArrayList<Date>();
 	}
 	
 	public static boolean isValidPaymentArray(int [][] pi) {
@@ -74,7 +77,17 @@ public class Park {
 		int [][] ret = { {inMot, outMot}, {inCar, outCar}, {inRv, outRv} };
 		return ret;
 	}
-	public void addAdmission() {
-		admissions.add(new Date());
+	public void addAdmission(Date d) {		
+		admissions.add(d);
+	}
+	public void addAdmission(int m, int d, int y) {
+		admissions.add(new Date(m, d, y));
+	}
+	
+	public int getPid() {
+		return pid;
+	}
+	public String getName() {
+		return name;
 	}
 }

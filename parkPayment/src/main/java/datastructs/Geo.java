@@ -3,7 +3,7 @@ package datastructs;
 public class Geo {
 	public double lat;
 	public double lng;
-	public Geo(int lt, int lg) {
+	public Geo(double lt, double lg) {
 		lat = lt;
 		lng = lg;
 	}

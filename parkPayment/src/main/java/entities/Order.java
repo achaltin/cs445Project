@@ -1,6 +1,7 @@
 package entities;
 
 import cs445.parkPayment.UniqueIdGenerator;
+import datastructs.LicensePlate;
 
 public class Order {
 	int oid;
@@ -14,6 +15,13 @@ public class Order {
 		vehicle = ve;
 		visitor = vi;
 		cc = c;
+	}
+	public boolean isValidOrder() {
+		return CreditCard.isValidCCNum(cc.getFullNum())
+				&& CreditCard.isValidExp(cc.getExpDate())
+				&& Vehicle.isValidType(vehicle.getType())
+				&& LicensePlate.isValidNum(vehicle.lp.getNum())
+				&& LicensePlate.isValidState(vehicle.lp.getState());
 	}
 
 }

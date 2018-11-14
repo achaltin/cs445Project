@@ -4,27 +4,39 @@ import datastructs.Address;
 import java.util.Scanner;
 
 public class CreditCard {
-	private int[] fullNum;
+	private String fullNum;
 	private String nameOnCard;
 	private String expDate;
-	private int[] lastFour;
+	private String lastFour;
 	private Address billing;
 	
-	public CreditCard(int[] num, String name, String exp, Address addr) {
-		fullNum = num;
+	public CreditCard(String num, String name, String exp, Address addr) {
+		fullNum = "    "; //at least four 
+		if(isValidCCNum(num))
+			fullNum = num;
+		expDate = "";
 		nameOnCard = name;
-		expDate = exp;
+		if(isValidExp(exp))
+			expDate = exp;
 		billing = addr;
-		lastFour = new int[4];
-		lastFour[3] = fullNum[fullNum.length-1];
-		lastFour[2] = fullNum[fullNum.length-2];
-		lastFour[1] = fullNum[fullNum.length-3];
-		lastFour[0] = fullNum[fullNum.length-4];
+		lastFour = fullNum.substring(fullNum.length()-4, fullNum.length());
 
 	}
 	
-	public static boolean isValidCCNum(int [] num) {
-		return num.length == 16 || num.length == 15;
+	public void setfullNum(String num) {
+		if(!isValidCCNum(fullNum) && isValidCCNum(num))
+			fullNum = num;
+	}
+	public void updateExpDate(String date) {
+		if( isValidExp(date) && //new date must be valid
+			(!isValidExp(expDate) ) || //either old date was bad or the new year is later
+			(Integer.parseInt(expDate.substring(3,4)) < Integer.parseInt(date.substring(3,4)) )
+		) {
+			expDate = date;
+		}
+	}
+	public static boolean isValidCCNum(String num) {
+		return num.length() == 16 || num.length() == 15 && num.matches("[0-9]+");
 	}
 	
 	public static boolean isValidExp(String exp) {
@@ -36,5 +48,21 @@ public class CreditCard {
 		}catch(Exception e) {
 			return false;
 		}
+	}
+	
+	public String getFullNum() {
+		return fullNum;
+	}
+	public String getLastFour() {
+		return lastFour;
+	}
+	public Address getAddr() {
+		return billing;
+	}
+	public String getName() {
+		return nameOnCard;
+	}
+	public String getExpDate() {
+		return expDate;
 	}
 }

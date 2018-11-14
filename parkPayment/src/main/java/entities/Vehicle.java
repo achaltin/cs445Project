@@ -3,10 +3,18 @@ import datastructs.LicensePlate;
 
 public class Vehicle {
 	private String type;
-	private LicensePlate lp;
+	LicensePlate lp;
 	
 	public Vehicle(String t, LicensePlate l) {
-		type = t;
+		type = "";
+		if(isValidType(t))
+			type = t;
 		lp = l;
+	}
+	public static boolean isValidType(String type) {
+		return type.equals("rv") || type.equals("car") || type.equals("motorcycle");
+	}
+	public String getType() {
+		return type;
 	}
 }

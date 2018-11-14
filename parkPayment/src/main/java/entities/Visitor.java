@@ -2,6 +2,8 @@ package entities;
 
 import cs445.parkPayment.UniqueIdGenerator;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Visitor {
 	int vid;
@@ -13,12 +15,20 @@ public class Visitor {
 	public Visitor(String e) {
 		vid = UniqueIdGenerator.getUniqueID();
 		name = "";
-		email = e;
+		email = "";
+		if(isValidEmail(e))
+			email = e;
+		orders = new ArrayList<Order>();
+		notes = new ArrayList<Note>();
 	}
 	public Visitor(String n, String e) {
 		vid = UniqueIdGenerator.getUniqueID();
 		name = n;
-		email = e;
+		email = "";
+		if(isValidEmail(e))
+			email = e;
+		orders = new ArrayList<Order>();
+		notes = new ArrayList<Note>();
 	}
 	public void addOrder(Order o) {
 		if(o.visitor.vid == vid)
@@ -27,6 +37,11 @@ public class Visitor {
 	public void addNote(Note n) {
 		if(n.vid == vid)
 			notes.add(n);
+	}
+	public static boolean isValidEmail(String email) {
+		Pattern regex = Pattern.compile("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b");
+		Matcher match = regex.matcher(email);
+		return match.find();
 	}
 }
 

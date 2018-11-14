@@ -1,10 +1,10 @@
 package entities;
-import java.util.Date;
 
 import cs445.parkPayment.UniqueIdGenerator;
+import datastructs.Date;
+import datastructs.ParkDetailReport;
 
 import java.util.ArrayList;
-import javafx.util.Pair;
 
 public class Report {
 	int rid;
@@ -13,7 +13,7 @@ public class Report {
 	Date end;
 	int totalAdmissions;
 	ArrayList<Park> parks;
-	ArrayList<Pair<Park, Integer>> parkAdmins;
+	ArrayList<ParkDetailReport> parkAdmins;
 	
 	public Report(String n, Date s, Date e, ArrayList<Park> p) {
 		rid = UniqueIdGenerator.getUniqueID();
@@ -22,15 +22,16 @@ public class Report {
 		end = e;
 		parks = p;
 		totalAdmissions = 0;
+		parkAdmins = new ArrayList<ParkDetailReport>();
 		for(Park pk : parks) {
-			Integer parkCount = 0;
+			ParkDetailReport pdr = new ParkDetailReport(pk, 0);
 			for(Date d : pk.admissions) {
-				if(start.before(d) && end.after(d)) {
+				if((start.before(d) || start.equals(d))&& (end.after(d) || end.equals(d))) {
 					totalAdmissions++;
-					parkCount++;
+					pdr.incrementReport();
 				}
 			}
-			parkAdmins.add(new Pair<Park, Integer>(pk, parkCount));
+			parkAdmins.add(pdr);
 		}
 	}
 	
