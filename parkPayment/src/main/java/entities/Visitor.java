@@ -43,5 +43,8 @@ public class Visitor {
 		Matcher match = regex.matcher(email);
 		return match.find();
 	}
+	public int getVid() {
+		return vid;
+	}
 }
 

@@ -34,6 +34,9 @@ public class Report {
 			parkAdmins.add(pdr);
 		}
 	}
-	
+	public int getRid()
+	{
+		return rid;
+	}
 
 }

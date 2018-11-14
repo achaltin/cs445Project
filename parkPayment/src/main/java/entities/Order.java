@@ -23,5 +23,7 @@ public class Order {
 				&& LicensePlate.isValidNum(vehicle.lp.getNum())
 				&& LicensePlate.isValidState(vehicle.lp.getState());
 	}
-
+	public int getOid() {
+		return oid;
+	}
 }

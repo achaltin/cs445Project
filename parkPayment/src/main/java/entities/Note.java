@@ -29,4 +29,7 @@ public class Note {
 				&& title.equals(other.title)
 				&& text.equals(other.text);
 	}
+	public int getNid() {
+		return nid;
+	}
 }
