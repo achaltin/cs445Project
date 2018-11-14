@@ -173,13 +173,16 @@ public class ParkManager implements BoundaryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public Report createReport(String name, Date start, Date end) {
+		Report r = new Report(name, start, end, parks);
+		return r;
+	}
 	public ArrayList<Report> viewAllReports() {
-		// TODO Auto-generated method stub
-		return null;
+		return reports;
 	}
 	public Report viewReportDetail(int rid) {
-		// TODO Auto-generated method stub
-		return null;
+		Report r = findReportById(rid);
+		return r;
 	}
 	public ArrayList<Object> search(String key) {
 		// TODO Auto-generated method stub
