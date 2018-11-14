@@ -32,4 +32,17 @@ public class Note {
 	public int getNid() {
 		return nid;
 	}
+	public int getVid() {
+		return vid;
+	}
+	public void setTitle(String newTitle) {
+		title = newTitle;
+	}
+	public void setText(String newText) {
+		text = newText;
+	}
+	public void updateDate() {
+		java.util.Date today = new java.util.Date();
+		date = new Date(today.getMonth(), today.getDate(), today.getYear());
+	}
 }

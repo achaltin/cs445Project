@@ -20,7 +20,7 @@ public interface BoundaryInterface {
 	
 	public ArrayList<Note> viewAllNotes();
 	public Note viewNoteDetail(int nid);
-	public void updateNote(int pid, int vid, String title, String text);
+	public void updateNote(int nid, int vid, String title, String text);
 	public void deleteNote(int nid);
 	public ArrayList<Note> searchNotes(String key);
 	

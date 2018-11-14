@@ -108,13 +108,27 @@ public class ParkManager implements BoundaryInterface {
 		Note n = findNoteById(nid);
 		return n;
 	}
-	public void updateNote(int pid, int vid, String title, String text) {
-		// TODO Auto-generated method stub
+	public void updateNote(int nid, int vid, String title, String text) {
+		Note n = findNoteById(nid);
+		if(n.getVid() == vid) {
+			n.setTitle(title);
+			n.setText(text);
+			n.updateDate();
+		}
 		
 	}
 	public void deleteNote(int nid) {
-		// TODO Auto-generated method stub
-		
+		int removeIndex = -1;
+		for(int i = 0; i<notes.size(); i++) {
+			if(notes.get(i).getNid() == nid)
+				removeIndex = i;
+		}
+		try {
+			notes.remove(removeIndex);
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+			System.err.println("Park not found");
+		}		
 	}
 	public ArrayList<Note> searchNotes(String key) {
 		// TODO Auto-generated method stub
