@@ -38,5 +38,15 @@ public class Report {
 	{
 		return rid;
 	}
+	
+	public String toString() {
+		String ret = "RID: "+rid+" Name: "+name+" Start Date: "
+				+start.toString()+" End Date: "+end.toString()
+				+" Total Admissions: "+totalAdmissions+" Detailed Park Reports:";
+		for (ParkDetailReport pdr : parkAdmins) {
+			ret += "\n\t"+pdr.toString();
+		}
+		return ret;
+	}
 
 }

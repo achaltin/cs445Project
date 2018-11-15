@@ -49,7 +49,9 @@ public class CreditCard {
 			return false;
 		}
 	}
-	
+	public String toString() {
+		return nameOnCard+" ,"+lastFour+" "+expDate+" "+billing.toString();
+	}
 	public String getFullNum() {
 		return fullNum;
 	}

@@ -26,4 +26,9 @@ public class Order {
 	public int getOid() {
 		return oid;
 	}
+	public String toString() {
+		return "OID: "+oid+" PID: " +pid+ "Vehicle: ["
+				+vehicle.toString()+"] Visitor: ["+visitor.toString()
+				+"] Credit Card: "+cc.toString();
+	}
 }

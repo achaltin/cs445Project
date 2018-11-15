@@ -66,8 +66,12 @@ public class ParkManager implements BoundaryInterface {
 		return p;
 	}
 	public ArrayList<Park> searchParks(String key) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Park> matches = new ArrayList<Park>();
+		for(Park p : parks) {
+			if(p.toString().contains(key))
+				matches.add(p);
+		}
+		return matches;
 	}
 	public ArrayList<Note> viewParkNotes(int pid) {
 		Park p = findParkById(pid);
@@ -131,8 +135,12 @@ public class ParkManager implements BoundaryInterface {
 		}		
 	}
 	public ArrayList<Note> searchNotes(String key) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Note> matches = new ArrayList<Note>();
+		for(Note n : notes) {
+			if(n.toString().contains(key))
+				matches.add(n);
+		}
+		return matches;
 	}
 	public Order createOrder(int pid, Vehicle veh, Visitor vi, CreditCard cc) {
 		Order o = new Order(pid, veh, vi, cc);
@@ -149,9 +157,12 @@ public class ParkManager implements BoundaryInterface {
 		return o;
 	}
 	public ArrayList<Order> searchOrders(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		ArrayList<Order> matches = new ArrayList<Order>();
+		for(Order o : orders) {
+			if(o.toString().contains(key))
+				matches.add(o);
+		}
+		return matches;	}
 	public Visitor createVisitor(String email) {
 		Visitor v = new Visitor(email);
 		visitors.add(v);
@@ -170,8 +181,12 @@ public class ParkManager implements BoundaryInterface {
 		return v;
 	}
 	public ArrayList<Visitor> searchVisitors(String key) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Visitor> matches = new ArrayList<Visitor>();
+		for(Visitor v : visitors) {
+			if(v.toString().contains(key))
+				matches.add(v);
+		}
+		return matches;
 	}
 	public Report createReport(String name, Date start, Date end) {
 		Report r = new Report(name, start, end, parks);
@@ -185,8 +200,12 @@ public class ParkManager implements BoundaryInterface {
 		return r;
 	}
 	public ArrayList<Object> search(String key) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Object> matches = new ArrayList<Object>();
+		matches.add(searchParks(key));
+		matches.add(searchNotes(key));
+		matches.add(searchOrders(key));
+		matches.add(searchVisitors(key));
+		return matches;
 	}
 	
 	

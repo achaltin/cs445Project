@@ -26,4 +26,7 @@ public class LicensePlate {
 	public String getNum() {
 		return num;
 	}
+	public String toString() {
+		return state+" "+num;
+	}
 }

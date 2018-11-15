@@ -46,5 +46,17 @@ public class Visitor {
 	public int getVid() {
 		return vid;
 	}
+	public String toString(){
+		String ret = "VID: "+vid+" Name: "+name
+				+" Email: "+email+" Orders Placed: ";
+		for(Order o : orders) {
+			ret+= "\n\t"+o.toString();
+		}
+		ret+="\nNotes Given: ";
+		for(Note n : notes) {
+			ret+= "\n\t"+n.toString();
+		}
+		return ret;
+	}
 }
 

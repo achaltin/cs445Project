@@ -45,4 +45,8 @@ public class Note {
 		java.util.Date today = new java.util.Date();
 		date = new Date(today.getMonth(), today.getDate(), today.getYear());
 	}
+	public String toString() {
+		return "NID: "+nid+" PID: "+pid+" VID: "+vid+" Date Written: "
+				+date.toString()+" Title: "+title+" Text: "+text;
+	}
 }

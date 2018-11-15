@@ -17,4 +17,7 @@ public class Vehicle {
 	public String getType() {
 		return type;
 	}
+	public String toString() {
+		return "Type: "+type+" License Plate: "+lp.toString();
+	}
 }

@@ -51,6 +51,15 @@ public class Park {
 		admissions = new ArrayList<Date>();
 		notes = new ArrayList<Note>();
 	}
+	public String toString() {
+		String ret = "PID: "+pid+": Name: "+name+" Region: "+region
+				+" Address: "+address.toString() + " Website: "+web
+				+" Phone: "+phone+" Geo: "+geo.toString() +"\nNotes: ";
+		for(Note n : notes) {
+			ret+="\n\t"+n.title+": "+n.text;
+		}
+		return ret;
+	}
 	
 	public static boolean isValidPaymentArray(int [][] pi) {
 		return pi.length == 3 && pi[0].length ==2 && pi[1].length == 2 && pi[2].length==2;
