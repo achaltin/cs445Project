@@ -6,6 +6,7 @@ import datastructs.*;
 import entities.*;
 import interfaces.BoundaryInterface;
 
+import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
@@ -460,5 +461,9 @@ public class RESTController {
         String s = gson.toJson(bi.search(key));
         return Response.status(Response.Status.OK).entity(s).build();
 	
+	}
+	@PostConstruct
+	public void postConstruct() {
+		
 	}
 }

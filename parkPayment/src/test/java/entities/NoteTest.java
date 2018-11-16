@@ -95,6 +95,8 @@ public class NoteTest {
 		assertEquals(n.text, "new text");
 		n.updateDate();
 		assertNotEquals(n.date, d);
-		assertEquals(n.toString(), "NID: 20 PID: 123 VID: 456 Date Written: 10/15/118 Title: new title Text: new text");
+		java.util.Date today = new java.util.Date();
+		Date newDate = new Date(today.getMonth(), today.getDate(),today.getYear());
+		assertEquals(n.toString(), "NID: "+n.nid+" PID: 123 VID: 456 Date Written: "+newDate.toString()+" Title: new title Text: new text");
 }
 }
