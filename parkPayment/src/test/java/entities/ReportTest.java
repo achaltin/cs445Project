@@ -22,6 +22,7 @@ public class ReportTest {
 		assertEquals(r.end, d2);
 		assertEquals(r.parks.size(), 0);
 		assertEquals(r.totalAdmissions, 0);
+		assertEquals(r.toString(), "RID: "+r.rid+" Name: Empty Report Start Date: 1/1/1900 End Date: 12/31/3000 Total Admissions: 0 Detailed Park Reports:");
 	}
 	@Test
 	public void testReportOnOneParks() {

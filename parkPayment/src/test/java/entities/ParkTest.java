@@ -83,4 +83,23 @@ public class ParkTest {
 		Date pDate = p.admissions.get(0);
 		assertTrue(pDate.equals(d));
 	}
+	@Test
+	public void testBadPaymentArray() {
+		int[][] tooSmall = { {1,2},{3,4} };
+		Address a = new Address("street", "city", "state","zip");
+		Geo g = new Geo(1.1, 2.2);
+		Park p = new Park("name", "region", a, "phone", "www.web.com",g, tooSmall);
+		assertTrue(Park.isValidPaymentArray(p.paymentInfo));
+	}
+	@Test
+	public void testEquals() {
+		Address a = new Address("street", "city", "state","zip");
+		Geo g = new Geo(1.1, 2.2);
+		int[][] goodArray = { {1,2}, {3,4}, {5,6} };
+		Park p = new Park("name", "region", a, "phone", "www.web.com",g, goodArray);
+		Park p2 = new Park("name", "region", a, "phone", "www.web.com",g, goodArray);
+		Park copy = p;
+		assertTrue(p.equals(copy));
+		assertFalse(p.equals(p2));
+	}
 }

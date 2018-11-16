@@ -73,5 +73,19 @@ public class OrderTest {
 		assertFalse(badLPNum.isValidOrder());
 		assertFalse(badLPState.isValidOrder());
 	}
+	
+	@Test
+	public void testToString() {
+		Address a = new Address("street","city","state","zip");
+		CreditCard cc = new CreditCard("1234567812345678", "name","01/19", a);
+		Visitor vi = new Visitor("email@mail.com");
+		Vehicle veh = new Vehicle("car", new LicensePlate("IL", "A12345"));
+		int[][] goodArray = { {1,2}, {3,4}, {5,6} };
+		Park p = new Park("name",a,"web.com",new Geo(1.1,-2.2), goodArray);
+		
+		Order o = new Order(p.pid, veh, vi, cc);
+		assertEquals(o.toString(), "OID: " +o.oid+" PID: "+p.pid+"Vehicle: [Type: car License Plate: IL A12345] Visitor: [VID: "+vi.vid+" Name:  Email: email@mail.com Orders Placed: \n" + 
+				"Notes Given: ] Credit Card: name ,5678 01/19 street, city state, zip");
+	}
 
 }

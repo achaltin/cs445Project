@@ -79,4 +79,22 @@ public class NoteTest {
 		Note n3 = new Note(123, 456, d, "Other", "More text");
 		assertFalse(n1.isDuplicate(n3));
 	}
+	
+	@Test
+	public void testAccessorsAndMutators() {
+		Date d = new Date(1,2,2018);
+		Note n = new Note(123, 456, d, "Title", "Some text for the note");
+		assertEquals(n.getVid(), 456);
+		assertEquals(n.getPid(), 123);
+		assertEquals(n.title, "Title");
+		assertEquals(n.text,"Some text for the note");
+		assertEquals(n.getDate(), d);
+		n.setText("new text");
+		n.setTitle("new title");
+		assertEquals(n.title, "new title");
+		assertEquals(n.text, "new text");
+		n.updateDate();
+		assertNotEquals(n.date, d);
+		assertEquals(n.toString(), "NID: 20 PID: 123 VID: 456 Date Written: 10/15/118 Title: new title Text: new text");
+}
 }

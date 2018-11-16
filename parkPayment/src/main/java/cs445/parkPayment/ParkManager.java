@@ -22,7 +22,7 @@ public class ParkManager implements BoundaryInterface {
 		return p;
 	}
 	public Park createPark(String name, String region, Address addr, String phone, String website, Geo geo, int[][] paymentInfo) {
-		Park p = new Park(name, region, addr, website, phone, geo, paymentInfo);
+		Park p = new Park(name, region, addr, phone, website, geo, paymentInfo);
 		parks.add(p);
 		return p;
 	}
@@ -190,6 +190,7 @@ public class ParkManager implements BoundaryInterface {
 	}
 	public Report createReport(String name, Date start, Date end) {
 		Report r = new Report(name, start, end, parks);
+		reports.add(r);
 		return r;
 	}
 	public ArrayList<Report> viewAllReports() {

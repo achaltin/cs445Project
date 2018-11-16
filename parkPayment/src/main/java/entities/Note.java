@@ -32,8 +32,17 @@ public class Note {
 	public int getNid() {
 		return nid;
 	}
+	public int getPid() {
+		return pid;
+	}
 	public int getVid() {
 		return vid;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public String getText() {
+		return text;
 	}
 	public void setTitle(String newTitle) {
 		title = newTitle;
@@ -44,6 +53,9 @@ public class Note {
 	public void updateDate() {
 		java.util.Date today = new java.util.Date();
 		date = new Date(today.getMonth(), today.getDate(), today.getYear());
+	}
+	public Date getDate() {
+		return date;
 	}
 	public String toString() {
 		return "NID: "+nid+" PID: "+pid+" VID: "+vid+" Date Written: "

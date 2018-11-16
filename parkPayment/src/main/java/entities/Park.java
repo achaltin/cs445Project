@@ -54,7 +54,11 @@ public class Park {
 	public String toString() {
 		String ret = "PID: "+pid+": Name: "+name+" Region: "+region
 				+" Address: "+address.toString() + " Website: "+web
-				+" Phone: "+phone+" Geo: "+geo.toString() +"\nNotes: ";
+				+" Phone: "+phone+" Geo: "+geo.toString() +"\nPayment Info: \n"+
+				"\t\tIn-State\tOut-Of-State\nRV:\t\t"+paymentInfo[0][0]
+				+"\t\t"+paymentInfo[0][1]+"\nCar:\t\t"+paymentInfo[1][0]
+				+"\t\t"+paymentInfo[1][1]+"\nMotorcycle\t"+paymentInfo[2][0]
+				+"\t\t"+paymentInfo[2][1]+"\nNotes:";
 		for(Note n : notes) {
 			ret+="\n\t"+n.title+": "+n.text;
 		}
@@ -134,6 +138,24 @@ public class Park {
 	}
 	public void setPaymentInfo(int [][] pi) {
 		paymentInfo = pi;
+	}
+	public int[][] getPaymentInfo(){
+		return paymentInfo;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public String getWebsite() {
+		return web;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public boolean equals(Park other) {
+		return pid==other.pid;
 	}
 }
 

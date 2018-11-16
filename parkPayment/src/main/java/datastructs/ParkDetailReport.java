@@ -12,11 +12,7 @@ public class ParkDetailReport {
 		parkName = p.getName();
 		totalAdmissions = admin;
 	}
-	public ParkDetailReport(int p, String pName, int admin) {
-		pid = p;
-		parkName = pName;
-		totalAdmissions = admin;
-	}
+
 	public void incrementReport() {
 		totalAdmissions++;
 	}

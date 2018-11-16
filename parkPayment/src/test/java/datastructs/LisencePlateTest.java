@@ -26,4 +26,10 @@ public class LisencePlateTest {
 		assertEquals(tooLong.getState(),"");
 		assertEquals(tooShort.getState(),"");
 	}
+	
+	@Test
+	public void testToString() {
+		LicensePlate lp = new LicensePlate("IL","B12345");
+		assertEquals(lp.toString(), "IL B12345");
+	}
 }
