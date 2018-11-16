@@ -452,4 +452,13 @@ public class RESTController {
         String s = gson.toJson(r);
         return Response.ok(s).build();
 	}
+	@Path("search?key={key}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response search(@PathParam("key") String key) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(bi.search(key));
+        return Response.status(Response.Status.OK).entity(s).build();
+	
+	}
 }
