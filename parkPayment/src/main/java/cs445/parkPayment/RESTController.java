@@ -404,4 +404,52 @@ public class RESTController {
         String s = gson.toJson(bi.searchVisitors(key));
         return Response.status(Response.Status.OK).entity(s).build();
 	}
+	@Path("reports")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response createReport(@Context UriInfo uriInfo,
+			@QueryParam("name") String name,
+			@QueryParam("startMonth") int sm,
+			@QueryParam("startDay") int sd,
+			@QueryParam("staryYear") int sy,
+			@QueryParam("endMonth") int em,
+			@QueryParam("endDay") int ed,
+			@QueryParam("endYear") int ey) {
+		Date start = new Date(sm, sd, sy);
+		Date end = new Date(em, ed, ey);
+		Report r = bi.createReport(name, start, end);
+		
+		int id = r.getRid();
+		Gson gson = new Gson();
+		String s = gson.toJson(r);
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+        builder.path(Integer.toString(id));
+        
+		return Response.created(builder.build()).entity(s).build();
+	
+	}
+	@Path("reports")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewAllReports() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(bi.viewAllReports());
+        return Response.status(Response.Status.OK).entity(s).build();
+	}
+	@Path("visitors/{rid}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewReportDetail(@PathParam("rid") int rid) {
+		Report r; 
+		try{
+			r = bi.viewReportDetail(rid);        
+		}
+        catch(Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Entity not found for ID: " + rid).build();
+        } 
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(r);
+        return Response.ok(s).build();
+	}
 }
