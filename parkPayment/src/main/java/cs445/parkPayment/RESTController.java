@@ -280,4 +280,67 @@ public class RESTController {
 		String s = gson.toJson(bi.searchNotes(key));
 		return Response.ok(s).build();
 	}
+	@Path("orders")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response createOrder(@Context UriInfo uriInfo,
+			@QueryParam("pid") int pid,
+			@QueryParam("vehicleType") String vType,
+			@QueryParam("lpNum") String lpNum,
+			@QueryParam("lpState") String lpState,
+			@QueryParam("vid") int vid,
+			@QueryParam("ccName") String ccName,
+			@QueryParam("ccNum") String ccNum,
+			@QueryParam("ccExpdate") String ccExpDate,
+			@QueryParam("ccBillStreet") String ccBillStreet,
+			@QueryParam("ccBillCity") String ccBillCity,
+			@QueryParam("ccBillState") String ccBillState,
+			@QueryParam("ccBillZip") String ccBillZip) {
+		Visitor vi = bi.viewVisitorDetail(vid);
+		Vehicle veh = new Vehicle(vType, new LicensePlate(lpNum, lpState));
+		Address a = new Address(ccBillStreet, ccBillCity, ccBillState, ccBillZip);
+		CreditCard cc = new CreditCard(ccNum, ccName, ccExpDate, a);
+		
+		Order o = bi.createOrder(pid, veh, vi, cc);
+		
+		int id = o.getOid();
+		Gson gson = new Gson();
+		String s = gson.toJson(o);
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+        builder.path(Integer.toString(id));
+        
+		return Response.created(builder.build()).entity(s).build();
+	}
+	@Path("orders")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewAllOrders() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(bi.viewAllOrders());
+        return Response.status(Response.Status.OK).entity(s).build();
+	}
+	@Path("orders/{oid}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewOrderDetail(@PathParam("oid") int oid) {
+		Order o; 
+		try{
+			o = bi.viewOrderDetails(oid);        
+		}
+        catch(Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Entity not found for ID: " + nid).build();
+        } 
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(o);
+        return Response.ok(s).build();
+	}
+	@Path("orders?key={key}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response searchOrders(@PathParam("key") String key) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(bi.searchOrders(key));
+        return Response.status(Response.Status.OK).entity(s).build();
+	}
 }
