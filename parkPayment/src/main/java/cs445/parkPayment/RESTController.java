@@ -328,7 +328,7 @@ public class RESTController {
 			o = bi.viewOrderDetails(oid);        
 		}
         catch(Exception e) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Entity not found for ID: " + nid).build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Entity not found for ID: " + oid).build();
         } 
         
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -341,6 +341,67 @@ public class RESTController {
 	public Response searchOrders(@PathParam("key") String key) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String s = gson.toJson(bi.searchOrders(key));
+        return Response.status(Response.Status.OK).entity(s).build();
+	}
+	@Path("visitors")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response createVisitor(@Context UriInfo uriInfo,
+			@PathParam("email") String email) {
+		Visitor v = bi.createVisitor(email);
+		int id = v.getVid();
+		Gson gson = new Gson();
+		String s = gson.toJson(v);
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+        builder.path(Integer.toString(id));
+        
+		return Response.created(builder.build()).entity(s).build();
+	}
+	@Path("visitors")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response createVisitor(@Context UriInfo uriInfo,
+			@PathParam("email") String email,
+			@PathParam("name") String name) {
+		Visitor v = bi.createVisitor(name, email);
+		int id = v.getVid();
+		Gson gson = new Gson();
+		String s = gson.toJson(v);
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder();
+        builder.path(Integer.toString(id));
+        
+		return Response.created(builder.build()).entity(s).build();
+	}
+	@Path("visitors")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewAllVisitors() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(bi.viewAllVisitors());
+        return Response.status(Response.Status.OK).entity(s).build();
+	}
+	@Path("visitors/{vid}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewVisitorDetail(@PathParam("vid") int vid) {
+		Visitor v; 
+		try{
+			v = bi.viewVisitorDetail(vid);        
+		}
+        catch(Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Entity not found for ID: " + vid).build();
+        } 
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(v);
+        return Response.ok(s).build();
+	}
+	@Path("visitors?key={key}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response searchVisitors(@PathParam("key") String key) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(bi.searchVisitors(key));
         return Response.status(Response.Status.OK).entity(s).build();
 	}
 }
