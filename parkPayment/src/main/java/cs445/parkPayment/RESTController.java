@@ -85,10 +85,10 @@ public class RESTController {
         
 		return Response.created(builder.build()).entity(s).build();
 	}
-	@Path("/parks{pid}")
+	@Path("/parks")
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createPark(@Context UriInfo uriInfo,
+	public Response updatePark(@Context UriInfo uriInfo,
 			@PathParam("pid") int pid,
 			@QueryParam("name") String name, 
 			@QueryParam("street") String street,
@@ -111,10 +111,10 @@ public class RESTController {
         
 		return Response.ok().build();
 	}
-	@Path("/parks/{pid")
+	@Path("/parks/{pid}")
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createPark(@Context UriInfo uriInfo,
+	public Response updatePark(@Context UriInfo uriInfo,
 			@PathParam("pid") int pid,
 			@QueryParam("name") String name, 
 			@QueryParam("region") String region,
@@ -231,5 +231,53 @@ public class RESTController {
 		return Response.created(builder.build()).entity(s).build();
 	
 	}
-	
+	@Path("notes")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewAllNotes() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(bi.viewAllNotes());
+        return Response.status(Response.Status.OK).entity(s).build();
+	}
+	@Path("notes/{nid}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response viewNoteDetail(@PathParam("nid") int nid) {
+        Note n;
+        try{
+        	n = bi.viewNoteDetail(nid);
+        }
+        catch(Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Entity not found for ID: " + nid).build();
+        } 
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String s = gson.toJson(n);
+        return Response.ok(s).build();
+	}
+	@Path("notes/{nid}")
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateNote(@PathParam("nid") int nid,
+			@QueryParam("vid") int vid,
+			@QueryParam("title") String title,
+			@QueryParam("text") String text) {
+		bi.updateNote(nid, vid, title, text);
+		return Response.ok().build();
+	}
+	@Path("notes/{nid}")
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deleteNote(@PathParam("nid") int nid) {
+		bi.deleteNote(nid);
+		return Response.ok().build();
+	}
+	@Path("notes?key={key}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response searchNotes(@PathParam("key") String key){
+		Gson gson = new Gson();
+		String s = gson.toJson(bi.searchNotes(key));
+		return Response.ok(s).build();
+	}
 }
