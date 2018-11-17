@@ -937,3 +937,47 @@ Caused by: java.net.BindException: Address already in use
 16-Nov-2018 13:19:40.620 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
 16-Nov-2018 13:19:40.622 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
 16-Nov-2018 13:19:40.623 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+16-Nov-2018 18:11:17.780 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.34
+16-Nov-2018 18:11:17.785 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 4 2018 22:28:22 UTC
+16-Nov-2018 18:11:17.785 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.34.0
+16-Nov-2018 18:11:17.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+16-Nov-2018 18:11:17.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.1
+16-Nov-2018 18:11:17.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+16-Nov-2018 18:11:17.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
+16-Nov-2018 18:11:17.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           10.0.2+13
+16-Nov-2018 18:11:17.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            "Oracle Corporation"
+16-Nov-2018 18:11:17.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/amelia/eclipse-workspace/cs445Project/parkPayment
+16-Nov-2018 18:11:17.787 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/amelia/eclipse-workspace/cs445Project/parkPayment
+16-Nov-2018 18:11:17.788 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+16-Nov-2018 18:11:17.788 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+16-Nov-2018 18:11:17.788 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+16-Nov-2018 18:11:17.789 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/amelia/eclipse-workspace/cs445Project/parkPayment/conf/logging.properties
+16-Nov-2018 18:11:17.789 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+16-Nov-2018 18:11:17.789 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+16-Nov-2018 18:11:17.789 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+16-Nov-2018 18:11:17.790 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+16-Nov-2018 18:11:17.790 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+16-Nov-2018 18:11:17.790 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/amelia/eclipse-workspace/cs445Project/parkPayment
+16-Nov-2018 18:11:17.790 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/amelia/eclipse-workspace/cs445Project/parkPayment
+16-Nov-2018 18:11:17.790 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/amelia/eclipse-workspace/cs445Project/parkPayment/temp
+16-Nov-2018 18:11:17.790 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/amelia/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+16-Nov-2018 18:11:17.828 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+16-Nov-2018 18:11:17.850 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+16-Nov-2018 18:11:17.854 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+16-Nov-2018 18:11:17.855 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+16-Nov-2018 18:11:17.856 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 587 ms
+16-Nov-2018 18:11:17.907 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+16-Nov-2018 18:11:17.907 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.34
+16-Nov-2018 18:11:17.919 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/docs]
+16-Nov-2018 18:11:18.269 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/docs] has finished in [349] ms
+16-Nov-2018 18:11:18.269 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/manager]
+16-Nov-2018 18:11:18.306 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/manager] has finished in [37] ms
+16-Nov-2018 18:11:18.306 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/examples]
+16-Nov-2018 18:11:18.596 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/examples] has finished in [289] ms
+16-Nov-2018 18:11:18.596 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/ROOT]
+16-Nov-2018 18:11:18.613 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/ROOT] has finished in [17] ms
+16-Nov-2018 18:11:18.613 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/host-manager]
+16-Nov-2018 18:11:18.635 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/amelia/eclipse-workspace/cs445Project/parkPayment/webapps/host-manager] has finished in [22] ms
+16-Nov-2018 18:11:18.639 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+16-Nov-2018 18:11:18.648 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+16-Nov-2018 18:11:18.650 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 793 ms
